@@ -2,10 +2,7 @@ package com.example.demo.model;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -13,6 +10,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @Builder
 @Entity
+@Table(name = "person")
 public class Person {
 
 	@GeneratedValue
