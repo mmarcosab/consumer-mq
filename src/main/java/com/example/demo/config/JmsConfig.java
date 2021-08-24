@@ -16,7 +16,7 @@ import javax.jms.ConnectionFactory;
 @EnableJms
 public class JmsConfig {
 
-    @Value( "${activemq.url}" )
+    @Value( "${activemq.broker-url}" )
     private String brokerUrl;
 
     @Value( "${activemq.user}" )
@@ -34,11 +34,13 @@ public class JmsConfig {
     }
 
     @Bean
-    public JmsListenerContainerFactory jmsFactoryTopic(ConnectionFactory connectionFactory,
+    public JmsListenerContainerFactory jmsListenerContainerFactory(ConnectionFactory connectionFactory,
                                                        DefaultJmsListenerContainerFactoryConfigurer configurer) {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         configurer.configure(factory, connectionFactory);
         factory.setPubSubDomain(true);
+        factory.setClientId("meu-consumer");
+        factory.setSubscriptionDurable(true);
         return factory;
     }
 

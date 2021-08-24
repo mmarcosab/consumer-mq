@@ -13,7 +13,7 @@ public class Relatorio {
 
     private final PersonRepository repository;
 
-    @Scheduled(cron = "0 03 22 * * *", zone = "America/Sao_Paulo")
+    //@Scheduled(cron = "0 03 22 * * *", zone = "America/Sao_Paulo")
     public void getPersonsAfterFifty(){
         long qtde = repository.count();
         log.info("Atualmente existem " + qtde + " pessoas cadastradas.");
